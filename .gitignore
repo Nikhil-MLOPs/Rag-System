@@ -1,9 +1,23 @@
+# Python
 .venv/
 __pycache__/
 *.pyc
+
+# Logs
 logs/
-data/
-models/
-.env
-.mlflow/
+
+# DVC cache (never commit)
 .dvc/cache/
+
+# Ignore actual data, but NOT .dvc files
+data/**
+!data/**/*.dvc
+
+# Models and artifacts
+models/
+
+# Environment
+.env
+
+# MLflow
+.mlflow/

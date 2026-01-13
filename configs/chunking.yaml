@@ -1,0 +1,39 @@
+chunking:
+  strategy: recursive
+  chunk_size: 800
+  chunk_overlap: 150
+  separators:
+    - "\n\n"
+    - "\n"
+    - " "
+experiments:
+  - name: exp_01_small_chunks
+    chunk_size: 400
+    chunk_overlap: 100
+  - name: exp_02_medium_chunks
+    chunk_size: 800
+    chunk_overlap: 150
+  - name: exp_03_large_chunks
+    chunk_size: 1200
+    chunk_overlap: 200
+  - name: exp_04_low_overlap
+    chunk_size: 800
+    chunk_overlap: 50
+  - name: exp_05_high_overlap
+    chunk_size: 800
+    chunk_overlap: 300
+  - name: exp_06_micro_chunks
+    chunk_size: 250
+    chunk_overlap: 50
+  - name: exp_07_macro_chunks
+    chunk_size: 1500
+    chunk_overlap: 200
+  - name: exp_08_page_aligned
+    chunk_size: 1000
+    chunk_overlap: 0
+  - name: exp_09_dense_overlap
+    chunk_size: 600
+    chunk_overlap: 300
+  - name: exp_10_balanced
+    chunk_size: 900
+    chunk_overlap: 150
