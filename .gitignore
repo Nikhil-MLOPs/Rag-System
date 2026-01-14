@@ -6,14 +6,16 @@ __pycache__/
 # Logs
 logs/
 
-# DVC cache (never commit)
+# DVC cache
 .dvc/cache/
 
-# Ignore data contents but allow DVC metadata
+# Ignore all data contents
 data/**
+
+# BUT track DVC metadata
 !data/**/*.dvc
 
-# Models and artifacts
+# Models
 models/
 
 # Environment
