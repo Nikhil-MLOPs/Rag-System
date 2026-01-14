@@ -9,15 +9,15 @@ logs/
 # DVC cache
 .dvc/cache/
 
-# Ignore everything under data by default
-data/*
+# Ignore everything under data
+data/**
 
-# Re-allow vectorstore directory
-!data/vectorstore/
-!data/vectorstore/**
-
-# Re-allow all DVC metadata files
+# Allow DVC metadata only
 !data/**/*.dvc
+
+# Explicitly ignore vectorstore binaries
+data/vectorstore/**
+!data/vectorstore/*.dvc
 
 # Models
 models/

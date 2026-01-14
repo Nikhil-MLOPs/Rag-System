@@ -1,0 +1,15 @@
+embedding:
+  model: nomic-embed-text
+  batch_size: 16
+  collection_name: clinica_chunks_v1
+
+vectorstore:
+  persist_directory: data/vectorstore/chroma
+
+experiments:
+  - name: exp_02_medium_chunks
+    chunk_size: 800
+    chunk_overlap: 150
+  - name: exp_10_balanced
+    chunk_size: 900
+    chunk_overlap: 150

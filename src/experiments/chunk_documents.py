@@ -46,13 +46,8 @@ def load_cleaned_documents() -> List[Document]:
     logger.info(f"Loaded {len(documents)} cleaned page-level documents")
     return documents
 
-def chunk_documents(chunk_size: int, chunk_overlap: int) -> List[Document]:
-    documents = load_cleaned_documents()
-
-    splitter = RecursiveCharacterTextSplitter(
-        chunk_size=chunk_size,
-        chunk_overlap=chunk_overlap,
-    )
+def chunk_from_documents(documents: list[Document], chunk_size: int, chunk_overlap: int,) -> list[Document]:
+    splitter = RecursiveCharacterTextSplitter(chunk_size=chunk_size, chunk_overlap=chunk_overlap,)
 
     chunks = splitter.split_documents(documents)
 
@@ -60,11 +55,11 @@ def chunk_documents(chunk_size: int, chunk_overlap: int) -> List[Document]:
         chunk.metadata["chunk_size"] = chunk_size
         chunk.metadata["chunk_overlap"] = chunk_overlap
 
-    logger.info(
-        f"Chunked into {len(chunks)} chunks "
-        f"(size={chunk_size}, overlap={chunk_overlap})"
-    )
     return chunks
+
+def chunk_documents(chunk_size: int, chunk_overlap: int) -> list[Document]:
+    documents = load_cleaned_documents()
+    return chunk_from_documents(documents, chunk_size, chunk_overlap)
 
 def run():
     setup_mlflow()

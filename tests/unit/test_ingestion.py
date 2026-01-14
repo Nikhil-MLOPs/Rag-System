@@ -1,8 +1,17 @@
-from pathlib import Path
+from langchain_core.documents import Document
+from src.ingestion.cleaner import clean_documents
 
-from src.ingestion.pdf_loader import load_pdf
 
-def test_pdf_loads():
-    path = Path("data/raw/Medical-book.pdf")
-    docs = load_pdf(path)
-    assert len(docs) > 0
+def test_cleaner_preserves_metadata():
+    long_text = "This is medically relevant content. " * 10
+
+    docs = [
+        Document(page_content=long_text, metadata={"page": 1}),
+        Document(page_content=long_text, metadata={"page": 2}),
+    ]
+
+    cleaned = clean_documents(docs)
+
+    assert len(cleaned) == 2
+    assert cleaned[0].metadata["page"] == 1
+    assert cleaned[1].metadata["page"] == 2
