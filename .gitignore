@@ -9,10 +9,10 @@ logs/
 # DVC cache
 .dvc/cache/
 
-# Ignore all data contents
-data/**
+# Ignore data contents (but not recursively kill subdirs)
+data/*
 
-# BUT track DVC metadata
+# Allow DVC metadata
 !data/**/*.dvc
 
 # Models
