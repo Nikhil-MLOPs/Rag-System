@@ -9,7 +9,7 @@ logs/
 # DVC cache (never commit)
 .dvc/cache/
 
-# Ignore actual data, but NOT .dvc files
+# Ignore data contents but allow DVC metadata
 data/**
 !data/**/*.dvc
 
